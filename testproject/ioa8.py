@@ -11,19 +11,26 @@ driver.get(URL)
 # szamok es operandus kiolvasasa
 num1 = driver.find_element_by_id('num1').text
 num2 = driver.find_element_by_id('num2').text
-operandus = driver.find_element_by_id('op').text
+operator = driver.find_element_by_id('op').text
 
 driver.find_element_by_id('submit').click()
 
 result = driver.find_element_by_id('result').text
 time.sleep(3)
 print(num1)
-print(str(operandus))
+print(str(operator))
 print(num2)
 print(result)
-# kalkulacio vegrehajtasa a
-calc = num1 num2
-assert
+# kalkulacio vegrehajtasa
+
+print('-'*50)
+if operator == '+':
+    print(int(num1) + int(num2))
+elif operator == '-':
+    print(int(num1) - int(num2))
+elif operator == '*':
+    print(int(num1) * int(num2))
+
 
 driver.close()
 
