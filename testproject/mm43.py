@@ -9,26 +9,33 @@ URL = "https://black-moss-0a0440e03.azurestaticapps.net/mm43.html"
 
 driver.get(URL)
 submit = driver.find_element_by_id('submit')
+
+
 def clear_data():
     driver.find_element_by_id('email').clear()
 
-#TC1 helyes kitoltes: teszt@elek.hu
+
+# TC1 helyes kitoltes: teszt@elek.hu
 
 driver.find_element_by_id('email').send_keys('teszt@elek.hu')
 submit.click()
+element = driver.find_elements_by_class_name('validation-error')
+print(len(element))
+assert (len(element)) == 0
 clear_data()
 
 time.sleep(2)
-#TC2 helytelen kitoltes: teszt@
-#hibauzenet eredeti nyelven: Please enter a part following '@'. 'teszt@' is incomplete.
+# TC2 helytelen kitoltes: teszt@
+# hibauzenet eredeti nyelven: Please enter a part following '@'. 'teszt@' is incomplete.
+
 error_msg = 'Kérjük, adja meg a „@” utáni részt is. A(z) „teszt@” cím nem teljes.'
 driver.find_element_by_id('email').send_keys('teszt@')
 submit.click()
 
 assert error_msg == driver.find_element_by_xpath('/html/body/div/div/form/div').text
 clear_data()
-#TC3 ures kitoltes
-#hibauzenet eredeti nyelven: Please fill out this field.
+# TC3 ures kitoltes
+# hibauzenet eredeti nyelven: Please fill out this field.
 error_msg2 = 'Kérjük, töltse ki ezt a mezőt.'
 driver.find_element_by_id('email').send_keys(' ')
 submit.click()
