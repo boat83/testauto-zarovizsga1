@@ -25,11 +25,18 @@ print(result)
 
 print('-'*50)
 if operator == '+':
-    print(int(num1) + int(num2))
+    add = (int(num1) + int(num2))
+    print(add)
+    assert str(add) == result
 elif operator == '-':
-    print(int(num1) - int(num2))
+    minus = (int(num1) - int(num2))
+    print(minus)
+    assert str(minus) == result
 elif operator == '*':
-    print(int(num1) * int(num2))
+    multi = (int(num1) * int(num2))
+    print(multi)
+    assert str(multi) == result
+
 
 
 driver.close()
